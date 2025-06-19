@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   root "articles#index"
 
   # get all articles
-  get "/articles", to: "articles#index"
+  # get "/articles", to: "articles#index"
 
   # Show individual articles
-  get "/articles/:id", to: "articles#show"
+  # get "/articles/:id", to: "articles#show"
+
+  # Combined get for all articles and for individual articles into resources.
+  resources :articles
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
