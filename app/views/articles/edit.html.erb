@@ -1,4 +1,4 @@
-<h1>New Article</h1>
+<h1>Edit Article</h1>
 
 <%= form_with model: @article do |form| %>
   <% if @article.errors.any? %>
@@ -33,4 +33,5 @@
   </div>
 <% end %>
 
+<%= link_to "Show this article", @article %> |
 <%= link_to "Back to articles", articles_path %>

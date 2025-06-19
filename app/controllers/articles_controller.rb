@@ -3,17 +3,14 @@ class ArticlesController < ApplicationController
     @articles = Article.all
   end
 
-  # Controller to show article by id
   def show
     @article = Article.find(params[:id])
   end
 
-  # Controller for new article
   def new
     @article = Article.new
   end
 
-  # Create new article
   def create
     @article = Article.new(article_params)
 
@@ -22,6 +19,27 @@ class ArticlesController < ApplicationController
     else
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def edit
+    @article = Article.find(params[:id])
+  end
+
+  def update
+    @article = Article.find(params[:id])
+
+    if @article.update(article_params)
+      redirect_to @article
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    @article = Article.find(params[:id])
+    @article.destroy
+
+    redirect_to articles_path, status: :see_other
   end
 
   private
